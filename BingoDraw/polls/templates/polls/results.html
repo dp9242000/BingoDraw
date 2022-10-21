@@ -1,0 +1,19 @@
+{% extends "polls/base.html" %}
+{% block content %}
+  <h1>{{ question.question_text }}</h1>
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="{% url 'polls:user-polls' question.author.username %}">{{ question.author }}</a>
+        <small class="text-muted">{{ question.pub_date }}</small>
+      </div>
+      <ul class="list-group">
+        {% for choice in question.choices.all %}
+            <li class="list-group-item list-group-item-light">{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+        {% endfor %}
+        <p><a href="{% url 'polls:detail' question.id %}">Vote again?</a></p>
+      </ul>
+    </div>
+  </article>
+
+{% endblock content %}
