@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_5j+4=isez!h!q+9u9i3*0)8mx(ugwzts094o1283@w=sdo&42
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dp9242000.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'bootstrap_datepicker_plus',
     'bootstrap5',
+    'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
