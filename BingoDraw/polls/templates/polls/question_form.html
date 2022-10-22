@@ -1,25 +1,25 @@
 {% extends "polls/base.html" %}
-{% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% load bootstrap5 %}
+{% load bootstrap4 %}
 {% bootstrap_css %}
-<script src="//code.jquery.com/jquery.min.js"></script>
+{% block content %}
+{% bootstrap_javascript jquery='full' %}
 {{ form.media }}
+
 <div class="content-section">
   <form method="POST">
     {% csrf_token %}
     <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Create/Update Question</legend>
+      <legend class="border-bottom mb-4">Create/Update a Poll</legend>
       <div id="form_set">
-        {{ form|crispy }}
+        {% bootstrap_form form %}
       </div>
       <legend class="border-bottom mb-4">Choices</legend>
         {{ choices.management_form }}
         {% for choice_form in choices %}
-          <div id="form_set">
-            {{ choice_form|crispy }}
-            <hr>
+          <div id="form_set_choice">
+            {% bootstrap_form choice_form %}
           </div>
         {% endfor %}
     </fieldset>
@@ -29,17 +29,16 @@
           {{ serviceFormset.empty_form|crispy }}
       </fieldset>
     </div>
-    <br>
     <div class="form-group">
       <button class="btn btn-outline-info" type="submit">Post</button>
     </div>
   </form>
 </div>
-<script>
+<script type="text/javascript">
   $('#add_more').click(function() {
-      var form_idx = $('#id_form-TOTAL_FORMS').val();
-      $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
-      $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+      var form_idx = $('#choice_form-TOTAL_FORMS').val();
+      $('#form_set_choice').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+      $('#choice_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
   });
 </script>
 {% endblock content %}

@@ -8,10 +8,7 @@ from django.contrib.auth import mixins
 from django.forms.models import inlineformset_factory
 from django.contrib.auth.models import User
 
-# DateTimePicker
-from bootstrap_datepicker_plus.widgets import DateTimePickerInput as BSDateTimePicker
-
-import pprint
+from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
 from .models import Question, Choice
 
@@ -66,7 +63,7 @@ class QuestionCreateView(mixins.LoginRequiredMixin, generic.CreateView):
     def get_form(self):
         """Add date picker to the form"""
         form = super(QuestionCreateView, self).get_form()
-        form.fields['pub_date'].widget = BSDateTimePicker()
+        form.fields['pub_date'].widget = DateTimePickerInput()
         return form
 
     def form_valid(self, form):

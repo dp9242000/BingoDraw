@@ -1,79 +1,82 @@
 {% load static %}
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% if title %}
-        <title>Polls - {{ title }}</title>
-    {% else %}
-        <title>Polls</title>
-    {% endif %}
-</head>
-<body>
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="{% url 'polls:index' %}">Polls</a>
-          <button class="navbar-toggler" type="button" href="#navbarToggle" data-bs-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
-                  <a class="nav-item nav-link" href="{% url 'polls:index' %}">Home</a>
-                  <a class="nav-item nav-link disabled" tabindex="-1" aria-disabled="true" href="#">About</a>
-                </div>
-                <!-- Navbar Right Side -->
-                <div class="navbar-nav">
-                  {% if user.is_authenticated %}
-                      <a class="nav-item nav-link" href="{% url 'polls:question-create' %}">Create Poll</a>
-                      <a class="nav-item nav-link" href="{% url 'profile' user %}">Profile</a>
-                      <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                  {% else %}
-                      <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                      <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-                  {% endif %}
+    <head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- CSS Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+        <!-- jQuery Library -->
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <!-- Bootstrap Framework -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- moment.js -->
+<!--    <script type="text/javascript" src="{{ STATIC_URL }} /static/moment.js"></script>-->
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% if title %}
+            <title>Polls - {{ title }}</title>
+        {% else %}
+            <title>Polls</title>
+        {% endif %}
+    </head>
+    <body>
+        <header class="site-header">
+          <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+              <a class="navbar-brand mr-4" href="{% url 'polls:index' %}">Polls</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                      <a class="nav-item nav-link" href="{% url 'polls:index' %}">Home</a>
+                      <a class="nav-item nav-link disabled" tabindex="-1" aria-disabled="true" href="#">About</a>
+                    </div>
+                    <!-- Navbar Right Side -->
+                    <div class="navbar-nav">
+                      {% if user.is_authenticated %}
+                          <a class="nav-item nav-link" href="{% url 'polls:question-create' %}">Create Poll</a>
+                          <a class="nav-item nav-link" href="{% url 'profile' user %}">Profile</a>
+                          <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                      {% else %}
+                          <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                          <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                      {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-      </nav>
-    </header>
-    <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-          {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-          {% endif %}
-          {% block content %}{% endblock %}
-        </div>
-        <div class="col-md-4">
-          <div class="content-section">
-            <h3>Applications</h3>
-            <p class='text-muted'>Other applications
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="#">Bingo Draw</a></li>
-                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="#">Randomizer</a></li>
-                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="#">Dice Roll</a></li>
-                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="#">Ranked Choice Vote</a></li>
-              </ul>
-            </p>
+          </nav>
+        </header>
+        <main role="main" class="container">
+          <div class="row">
+            <div class="col-md-8">
+              {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+              {% endif %}
+              {% block content %}{% endblock %}
+            </div>
+            <div class="col-md-4">
+              <div class="content-section">
+                <h3>Applications</h3>
+                <p class='text-muted'>Other applications
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="#">Bingo Draw</a></li>
+                    <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="#">Randomizer</a></li>
+                    <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="#">Dice Roll</a></li>
+                    <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="#">Ranked Choice Vote</a></li>
+                  </ul>
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </main>
-    <!-- jQuery Library -->
-    <script src="//code.jquery.com/jquery.min.js"></script>
-    <!-- Bootstrap Framework -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- moment.js -->
-    <script type="text/javascript" src="{{ STATIC_URL }} /static/moment.js"></script>
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-</body>
+        </main>
+    </body>
 </html>
