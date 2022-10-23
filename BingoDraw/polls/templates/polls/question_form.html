@@ -36,9 +36,9 @@
 </div>
 <script type="text/javascript">
   $('#add_more').click(function() {
-      var form_idx = $('#choice_form-TOTAL_FORMS').val();
+      var form_idx = $('#choices-TOTAL_FORMS').val();
       $('#form_set_choice').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
-      $('#choice_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+      $('#choices-TOTAL_FORMS').val(parseInt(form_idx) + 1);
   });
 </script>
 {% endblock content %}
