@@ -98,7 +98,7 @@ class QuestionUpdateView(mixins.LoginRequiredMixin, mixins.UserPassesTestMixin, 
     def get_form(self):
         """Add date picker to the form"""
         form = super(QuestionUpdateView, self).get_form()
-        form.fields['pub_date'].widget = BSDateTimePicker()
+        form.fields['pub_date'].widget = DateTimePickerInput()
         return form
 
     def form_valid(self, form):
