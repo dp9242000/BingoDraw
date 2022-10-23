@@ -35,9 +35,7 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
-    'crispy_bootstrap5',
     'bootstrap_datepicker_plus',
-    'bootstrap5',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -133,8 +131,8 @@ MEDIA_URL = 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'polls:index'
 LOGIN_URL = 'login'
