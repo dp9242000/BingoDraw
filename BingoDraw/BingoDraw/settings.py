@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'dp9242000.pythonanywhere.com']
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'users.apps.UsersConfig',
+    'bingo.apps.BingoConfig',
     'crispy_forms',
     'bootstrap_datepicker_plus',
     'bootstrap4',

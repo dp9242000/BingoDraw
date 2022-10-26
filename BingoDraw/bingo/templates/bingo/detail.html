@@ -1,0 +1,17 @@
+{% extends "polls/base.html" %}
+{% block content %}
+<legend><h1>{{ card.title }}</h1></legend>
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <small class="text-muted">{{ card.pub_date }}</small>
+        </div>
+        <fieldset>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            {% for tile in card.tiles.all %}
+            <li class="list-group-item list-group-item-light">{{ tile.tile_text }}</li>
+            {% endfor %}
+        </fieldset>
+    </div>
+</article>
+{% endblock content %}
