@@ -23,22 +23,20 @@
   </div>
   {% if profile_question_list %}
     <div class="content-section">
-    <div class="media">
        <h2>Polls</h2>
       {% for question in profile_question_list %}
-        <div class="content-section">
+        <article class="media content-section">
             <div class="media-body">
                 <div class="article-metadata">
-                  <a class="mr-2" href="#">{{ question.author }}</a>
-                  <small class="text-muted">on {{ question.pub_date|date:"F d, Y" }}</small>
+                    <a class="mr-2" href="#">{{ question.author }}</a>
+                    <small class="text-muted">on {{ question.pub_date|date:"F d, Y" }}</small>
                 </div>
                 <h2><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></h2>
                 <small class="text-muted">Total Votes: {{ question.total_votes }}</small>
-             </div>
-          </div>
+            </div>
+        </article>
       {% endfor %}
         </div>
-      </div>
     {% else %}
         <article class="media content-section">
           <div class="media-body">
