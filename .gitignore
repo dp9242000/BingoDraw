@@ -2,3 +2,5 @@ BingoDraw/*/migrations/*
 BingoDraw/db.sqlite3
 BingoDraw/BingoDraw/__pycache__/*
 BingoDraw/media/*
+.gitignore
+BingoDraw/BingoDraw/settings.py
