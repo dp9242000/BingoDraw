@@ -3,7 +3,6 @@
     <h1>Choose a Question</h1>
 
     {% if latest_question_list %}
-        <ul>
         {% for question in latest_question_list %}
             <article class="media content-section">
               <div class="media-body">
@@ -34,7 +33,6 @@
                 <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
             {% endif %}
         {% endif %}
-        </ul>
     {% else %}
         <article class="media content-section">
           <div class="media-body">
